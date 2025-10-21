@@ -1,0 +1,61 @@
+{
+  "__comment": "StratusScan GovCloud Configuration Template - Copy this file to config.json and customize",
+  "account_mappings": {
+    "123456789012": "PROD-GOVCLOUD",
+    "234567890123": "DEV-GOVCLOUD",
+    "345678901234": "TEST-GOVCLOUD",
+    "__comment": "Add your own GovCloud account mappings in the format 'account_id': 'friendly_name'"
+  },
+  "agency_name": "YOUR-AGENCY",
+  "govcloud_environment": "IL4",
+  "default_regions": ["us-gov-east-1", "us-gov-west-1"],
+  "resource_preferences": {
+    "ec2": {
+      "default_filter": "all", 
+      "include_stopped": true,
+      "default_region": "us-gov-east-1"
+    },
+    "vpc": {
+      "default_export_type": "all",
+      "default_region": "us-gov-east-1"
+    },
+    "s3": {
+      "default_region": "us-gov-east-1"
+    },
+    "ebs": {
+      "default_region": "us-gov-east-1"
+    },
+    "rds": {
+      "default_region": "us-gov-east-1"
+    },
+    "ecs": {
+      "default_region": "us-gov-east-1"
+    },
+    "elb": {
+      "default_region": "us-gov-east-1"
+    },
+    "compute_optimizer": {
+      "enabled": true,
+      "note": "Limited availability in GovCloud - may not be available in all regions",
+      "default_region": "us-gov-east-1"
+    }
+  },
+  "disabled_services": {
+    "trusted_advisor": {
+      "reason": "Not available in AWS GovCloud",
+      "enabled": false,
+      "alternative": "Use AWS Config Rules or custom compliance scripts"
+    }
+  },
+  "govcloud_specific": {
+    "partition": "aws-us-gov",
+    "compliance_level": "FedRAMP Moderate",
+    "valid_regions": ["us-gov-east-1", "us-gov-west-1"],
+    "notes": [
+      "This configuration is optimized for AWS GovCloud IL4 (FedRAMP Moderate)",
+      "Some AWS services have limited availability in GovCloud",
+      "Trusted Advisor is not available - use AWS Config for compliance monitoring",
+      "Always verify service availability in your specific GovCloud regions"
+    ]
+  }
+}
